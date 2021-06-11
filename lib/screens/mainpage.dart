@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage>
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -47,8 +47,8 @@ class _MainPageState extends State<MainPage>
         controller: tabController,
         children: <Widget>[
           HomeTab(),
-          EarningsTab(),
-          RatingsTab(),
+          //EarningsTab(),
+          // RatingsTab(),
           ProfileTab()
         ],
       ),
@@ -58,14 +58,14 @@ class _MainPageState extends State<MainPage>
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.credit_card),
-            label: 'Earnings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star),
-            label: 'Ratings',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.credit_card),
+          //   label: 'Earnings',
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.star),
+          //   label: 'Ratings',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Account',

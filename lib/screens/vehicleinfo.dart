@@ -22,7 +22,6 @@ class VehicleInfoPage extends StatelessWidget {
     scaffoldKey.currentState.showSnackBar(snackbar);*/
   }
 
-
   static const String id = 'vehicleinfo';
 
   var carModelController = TextEditingController();

@@ -79,6 +79,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         'fullname': fullNameController.text,
         'email': emailController.text,
         'phone': phoneController.text,
+        'status': 'offline',
       };
       newUserRef.set(userMap);
       currentFirebaseUser = user;

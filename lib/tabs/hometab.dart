@@ -46,18 +46,20 @@ class _HomeTabState extends State<HomeTab> {
   //async
   {
     currentFirebaseUser =
-    //await
-    FirebaseAuth.instance.currentUser;
-PushNotificationService pushNotificationService = PushNotificationService();
-pushNotificationService.initialize();
-pushNotificationService.getToken();
+        //await
+        FirebaseAuth.instance.currentUser;
+    PushNotificationService pushNotificationService = PushNotificationService();
+    pushNotificationService.initialize();
+    pushNotificationService.getToken();
   }
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getCurrentDriverInfo();
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -129,6 +131,12 @@ pushNotificationService.getToken();
   }
 
   void GoOnline() {
+    FirebaseDatabase.instance
+        .reference()
+        .child('drivers')
+        .child(currentFirebaseUser.uid.toString())
+        .update({'status': 'online'});
+
     Geofire.initialize('driversAvailable');
     Geofire.setLocation(currentFirebaseUser.uid, currentPosition.latitude,
         currentPosition.longitude);
@@ -140,6 +148,12 @@ pushNotificationService.getToken();
   }
 
   void GoOffline() {
+    FirebaseDatabase.instance
+        .reference()
+        .child('drivers')
+        .child(currentFirebaseUser.uid.toString())
+        .update({'status': 'offline'});
+
     Geofire.removeLocation(currentFirebaseUser.uid);
     tripRequestRef.onDisconnect();
     tripRequestRef.remove();
@@ -161,7 +175,4 @@ pushNotificationService.getToken();
       mapController.animateCamera(CameraUpdate.newLatLng(pos));
     });
   }
-
-  
-
 }
